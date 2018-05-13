@@ -1,0 +1,27 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\linkedObjectControl.cs">
+    <Files>
+      <File FileName="Assets\Scripts\UIScripts\saveControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\controlSingle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placementControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placementScreenMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placementSpace.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placedObjectControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placementObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\magnet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\solenoid.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\physicsObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\physicsGameControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\structure.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\placedObjectAnchor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\linkedObjectControl.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\objectSaveInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\connectorSaveInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

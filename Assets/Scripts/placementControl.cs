@@ -224,14 +224,14 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 	public void AddNewConnected(linkedObjectControl newControl){
 		allConnected.Add (newControl);
 	}
-
+	/*
 	public List<GameObject> GetAllConnectedObject(placedObjectAnchor inputAnchor){
 
 		if (inputAnchor.Get
 
 
 	}
-
+*/
 	private void CheckMoveActions(){
 		if (myMoveActions.Count > 0) {
 			// -1 = not set, -2 = nullified, cannot be set

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class objectSaveInfo {
 
-	public abstract int GetSaveType(){
-
-	}
+	public abstract int GetSaveType ();
 
 
 }

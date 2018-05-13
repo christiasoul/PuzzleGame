@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B1D93F42-7FEF-A480-63D7-0B4A587DB791}</ProjectGuid>
+    <ProjectGuid>{9B9C96A4-3171-9BD2-6071-4AF2BBC9CFA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-UnityScript-firstpass</AssemblyName>

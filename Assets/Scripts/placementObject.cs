@@ -106,16 +106,16 @@ public class placementObject {
 		return myGamePrefab;
 	}
 
-	public placementObject [] GetConnections(){
-		return myAnchors.Get;
+	public placedObjectAnchor [] GetConnections(){
+		return myAnchors;
 	}
 
 	//Connect the new object in position connectPos
-	public bool Connect(placementObject newOb, int connectPos){
+	public bool Connect(placedObjectAnchor newOb, int connectPos){
 		if (connectPos >= GetNumOfConnections()) {
 			return false;
 		} else {
-			connections [connectPos] = newOb;
+			myAnchors [connectPos] = newOb;
 			return true;
 		}
 	}

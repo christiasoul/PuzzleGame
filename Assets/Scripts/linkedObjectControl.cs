@@ -15,13 +15,9 @@ public class linkedObjectControl {
 	}
 
 	public bool checkIfGameObject(GameObject checkOb){
-		int checkId = checkOb.GetInstanceID ();
 
-		connections.Contains (checkOb);
+		return connections.Contains (checkOb); // May be slow
 
-		for (int i = 0; i < connections.Count; i++){
-
-		}
 	}
 
 

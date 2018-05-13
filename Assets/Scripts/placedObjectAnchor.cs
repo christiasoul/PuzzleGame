@@ -32,6 +32,6 @@ public class placedObjectAnchor : MonoBehaviour {
 		objectConnectIndexes.Remove (removedIndex);
 	}
 
-	public linkSaveInfo 
+	public connectorSaveInfo mySaveData;
 
 }

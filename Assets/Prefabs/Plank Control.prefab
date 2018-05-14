@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61243892307674230}
   - component: {fileID: 114876889700056822}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Plank Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

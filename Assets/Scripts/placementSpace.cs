@@ -66,7 +66,7 @@ public class placementSpace {
 		for (int i = 0; i < presetObs.Count; i++) {
 			presetObs [i].CreatePhysicsOb ();
 		}
-
+		placementControl.instance.ClearObject ();
 		isInPhysics = true;
 	}
 
@@ -79,6 +79,10 @@ public class placementSpace {
 		}
 
 		isInPhysics = false;
+	}
+
+	public bool IsInPhysicsMode(){
+		return isInPhysics;
 	}
 
 	public List<placementObject> GetObjects(){

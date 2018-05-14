@@ -37,7 +37,8 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 	[SerializeField]
 	private float selectAccuracy = .1f;
 	[SerializeField]
-	private float cameraSmoothTime = 1f;
+	private float cameraSmoothTimeOriginal = 1f;
+	private float cameraSmoothTime;
 
 	public int buttonSectionSelection = -1;
 
@@ -52,6 +53,8 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 	private float curCameraSmoothTime = 0f;
 
 	private List<linkedObjectControl> allConnected;
+
+	private float screenScaleAmt = 1;
 
 	void Awake(){
 
@@ -73,6 +76,8 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 		} else {
 			myMoneyDisplay = Instantiate (moneyDisplayLimited, controlSingle.Instance.GetCanvas ().transform);
 		}
+
+		cameraSmoothTime = cameraSmoothTimeOriginal;
 		//!! TEMP
 
 
@@ -85,31 +90,32 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 	}
 
 	public void OnPointerUp(PointerEventData eventData){
-		if (eventData.button == PointerEventData.InputButton.Right) {
+		if (!curSpace.IsInPhysicsMode ()) {
+			if (eventData.button == PointerEventData.InputButton.Right) {
 
-			if (curPrefabSelection != null) {
-				Debug.Log ("Right Button Press");
-				ClearObject ();
-			}
-		} else if (eventData.button == PointerEventData.InputButton.Left) {
-			if (curPrefabSelection != null) {
-				Debug.Log ("Left Button Press");
-				if (!CheckArea ()) {
-					CreateNoSpaceAlert ();
-				} else if (curSpace.CheckAbleToPlaceObject (curPrefabSelection.GetComponent<placedObjectControl> ())) {
-					curSpace.AddItem (Vector3.ProjectOnPlane (myCamera.ScreenToWorldPoint (Input.mousePosition), Vector3.forward) + curScreenOffset, curPrefabSelection.GetComponent<placedObjectControl> ().GetId ());
-					if (Input.GetButton ("MultipleObjectHold") != true) {
-						ClearObject ();
+				if (curPrefabSelection != null) {
+					Debug.Log ("Right Button Press");
+					ClearObject ();
+				}
+			} else if (eventData.button == PointerEventData.InputButton.Left) {
+				if (curPrefabSelection != null) {
+					Debug.Log ("Left Button Press");
+					if (!CheckArea ()) {
+						CreateNoSpaceAlert ();
+					} else if (curSpace.CheckAbleToPlaceObject (curPrefabSelection.GetComponent<placedObjectControl> ())) {
+						curSpace.AddItem (Vector3.ProjectOnPlane (myCamera.ScreenToWorldPoint (Input.mousePosition), Vector3.forward) + curScreenOffset, curPrefabSelection.GetComponent<placedObjectControl> ().GetId ());
+						if (Input.GetButton ("MultipleObjectHold") != true) {
+							ClearObject ();
+						}
+					} else {
+				
 					}
 				} else {
-				
+					Collider2D[] hitRet = Physics2D.OverlapCircleAll (Vector3.ProjectOnPlane (myCamera.ScreenToWorldPoint (Input.mousePosition), Vector3.forward), selectAccuracy);
+					if (hitRet.Length > 0)
+						SetMyControlObjectSelection (GetPriorityObject (hitRet).GetComponent<placedObjectControl> ());
 				}
-			}  else {
-				Collider2D [] hitRet = Physics2D.OverlapCircleAll (Vector3.ProjectOnPlane (myCamera.ScreenToWorldPoint (Input.mousePosition), Vector3.forward), selectAccuracy);
-				if (hitRet.Length > 0 )
-					
-				SetMyControlObjectSelection( GetPriorityObject( hitRet ).GetComponent<placedObjectControl>() );
-			}
+			} 
 		} else if (eventData.button == PointerEventData.InputButton.Middle) {
 			middleMouseDown = false;
 		}
@@ -315,10 +321,13 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 			if (curSpace.CanIncreaseScreenSize (controlSingle.Instance.GetScreenScaleAmt ())) {
 				// Enlargen
 				myCamera.orthographicSize *= controlSingle.Instance.GetScreenScaleAmt ();
+				cameraSmoothTime /= controlSingle.Instance.GetScreenScaleAmt ();
 			}
 		} else {
 			// Shrink
 			myCamera.orthographicSize *= 1/controlSingle.Instance.GetScreenScaleAmt ();
+			cameraSmoothTime *= controlSingle.Instance.GetScreenScaleAmt ();
+
 		}
 	}
 
@@ -348,14 +357,16 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 	}
 
 	public void ItemButton(int mySelection){
-		if (curPrefabSelection != null) {
-			Destroy (curPrefabSelection);
+		if (!curSpace.IsInPhysicsMode ()) {
+			if (curPrefabSelection != null) {
+				Destroy (curPrefabSelection);
+			}
+
+			curPrefabSelection = Instantiate (objectMasterList [mySelection].gameObject);
+			curPrefabSelection.transform.position = Vector3.ProjectOnPlane (myCamera.ScreenToWorldPoint (Input.mousePosition), Vector3.forward);
+
+			isActive = true;
 		}
-
-		curPrefabSelection = Instantiate( objectMasterList [mySelection].gameObject);
-		curPrefabSelection.transform.position = Vector3.ProjectOnPlane( myCamera.ScreenToWorldPoint( Input.mousePosition ), Vector3.forward);
-
-		isActive = true;
 
 	}
 

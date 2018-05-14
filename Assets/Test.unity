@@ -6819,7 +6819,7 @@ MonoBehaviour:
   - {fileID: 1703175196}
   - {fileID: 806418944}
   selectAccuracy: 0.1
-  cameraSmoothTime: 0.05
+  cameraSmoothTimeOriginal: 0.05
   buttonSectionSelection: -1
 --- !u!1 &1506171974
 GameObject:

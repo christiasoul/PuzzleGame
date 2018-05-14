@@ -116,7 +116,8 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 						SetMyControlObjectSelection (GetPriorityObject (hitRet).GetComponent<placedObjectControl> ());
 				}
 			} 
-		} else if (eventData.button == PointerEventData.InputButton.Middle) {
+		} 
+		if (eventData.button == PointerEventData.InputButton.Middle) {
 			middleMouseDown = false;
 		}
 	}
@@ -297,10 +298,10 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 		}
 
 
-		Vector3 distance = moveDir * controlSingle.Instance.GetScreenMoveAmt() * mult * Time.deltaTime;
+		Vector3 distance = moveDir * (controlSingle.Instance.GetScreenMoveAmt() * mult * Time.deltaTime) * (cameraSmoothTimeOriginal /cameraSmoothTime);
 
 		if (curSpace.CanMoveDir (distance)) {
-			myCamera.transform.Translate(distance);
+			myCamera.transform.Translate(distance );
 			Debug.Log ("Moving" + myCamera.transform.position); 
 			curSpace.SetScreenOffset (myCamera.transform.position);
 		}
@@ -465,7 +466,7 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 				Vector3 velocity = Vector3.zero;
 				curCameraSmoothTime = Time.deltaTime;
 				Vector3 newPos = Vector3.SmoothDamp (myCamera.transform.position, myCamera.transform.position + cameraVelocity, ref velocity, cameraSmoothTime - curCameraSmoothTime);
-				cameraVelocity -= newPos - myCamera.transform.position;
+				cameraVelocity -= (newPos - myCamera.transform.position) / (cameraSmoothTimeOriginal /cameraSmoothTime);
 				myCamera.transform.position = newPos; 
 				middleMousePosition = Input.mousePosition;
 
@@ -477,7 +478,7 @@ public class placementControl : MonoBehaviour, IPointerUpHandler, IPointerEnterH
 			Vector3 newPos = Vector3.SmoothDamp (myCamera.transform.position, myCamera.transform.position + cameraVelocity, ref velocity, cameraSmoothTime - curCameraSmoothTime);
 			cameraVelocity -= newPos - myCamera.transform.position;
 			myCamera.transform.position = newPos; 
-			if (curCameraSmoothTime > cameraSmoothTime) {
+			if (curCameraSmoothTime > Mathf.Min( cameraSmoothTime, cameraSmoothTimeOriginal) ) {
 				cameraVelocity = Vector3.zero; 
 			}
 			CheckMoveActions ();

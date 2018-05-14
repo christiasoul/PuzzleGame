@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\placementControl.cs">
+    <Files>
+      <File FileName="Assets\Scripts\intGraph.cs" Line="73" Column="3" />
+      <File FileName="Assets\Scripts\controlSingle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\floatGraph.cs" Line="180" Column="16" />
+      <File FileName="Assets\Scripts\placedObjectAnchor.cs" Line="35" Column="26" />
+      <File FileName="Assets\Scripts\placementControl.cs" Line="301" Column="101" />
+      <File FileName="Assets\Scripts\objectSaveInfo.cs" Line="7" Column="37" />
+      <File FileName="Assets\Scripts\linkedObjectControl.cs" Line="19" Column="56" />
+      <File FileName="Assets\Scripts\placementObject.cs" Line="18" Column="2" />
+      <File FileName="Assets\Scripts\placementSpace.cs" Line="70" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
